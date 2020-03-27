@@ -58,15 +58,15 @@ function Login(props) {
 
   return (
     <div className="Login">
-        <h2 className="page-title">ActivePause</h2>
+        <h2 className="page-title">ActivePause Login</h2>
         <form className="login-form" onSubmit={submitForm}> 
             <h3>Login</h3>
             <div className="twelve columns">
-              <label htmlFor="exampleEmailInput">Your email</label>
-              <input onChange={changeEmail} className="u-full-width" type="email" placeholder="test@mailbox.com" name="email"/>
+              <label htmlFor="email">Email</label>
+              <input onChange={changeEmail} className="u-full-width" type="email" placeholder="test@mail.com" name="email"/>
             </div>
             <div className="twelve columns">
-              <label htmlFor="exampleEmailInput">Your password</label>
+              <label htmlFor="password">Password</label>
               <input onChange={changePassword} className="u-full-width" type="password" placeholder="mypassword" name="password"/>
             </div>
             <div className="twelve columns">

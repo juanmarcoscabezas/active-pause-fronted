@@ -74,19 +74,19 @@ function Signup(props) {
         <form className="login-form" onSubmit={submitForm}> 
             <h3>Signup</h3>
             <div className="twelve columns">
-              <label htmlFor="exampleEmailInput">First name</label>
-              <input onChange={changeFirstName} className="u-full-width" type="text" placeholder="Juan Marcos" name="email"/>
+              <label htmlFor="firstName">First name</label>
+              <input onChange={changeFirstName} className="u-full-width" type="text" placeholder="John" name="firstName"/>
             </div>
             <div className="twelve columns">
-              <label htmlFor="exampleEmailInput">last name</label>
-              <input onChange={changeLastName} className="u-full-width" type="text" placeholder="Cabezas" name="email"/>
+              <label htmlFor="lastName">Last name</label>
+              <input onChange={changeLastName} className="u-full-width" type="text" placeholder="Arnold" name="lastName"/>
             </div>
             <div className="twelve columns">
-              <label htmlFor="exampleEmailInput">Your email</label>
-              <input onChange={changeEmail} className="u-full-width" type="email" placeholder="test@mailbox.com" name="email"/>
+              <label htmlFor="email">Email</label>
+              <input onChange={changeEmail} className="u-full-width" type="email" placeholder="test@mail.com" name="email"/>
             </div>
             <div className="twelve columns">
-              <label htmlFor="exampleEmailInput">Your password</label>
+              <label htmlFor="password">Password</label>
               <input onChange={changePassword} className="u-full-width" type="password" placeholder="mypassword" name="password"/>
             </div>
             <div className="twelve columns">
