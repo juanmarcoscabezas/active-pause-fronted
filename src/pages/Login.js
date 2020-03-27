@@ -1,26 +1,59 @@
 import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux';
 import "./Form.css";
 
-function Login() {
+function Login(props) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   function submitForm(e) {
     e.preventDefault();
-    fetch('https://localhost:3000/auth/login')
-      .then(res => res.json())
-      .then(
-        (result) => {
-          console.log(result);
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        (error) => {
-          console.log(error);
+
+    const user = {
+      email,
+      password
+    };
+
+    const config = {
+      method: 'POST',
+      body: JSON.stringify(user),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    fetch('http://localhost:3000/auth/login', config)
+    .then(res => res.json())
+    .then(
+      (result) => {
+        if (!result.error) {
+          setEmail('');
+          setPassword('');
+          props.dispatch({
+            type: 'LOGIN',
+            data: result
+          });
+          props.history.push('/');
+        } else {
+          alert(result.message);
         }
-      )
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
+  }
+
+  function changeEmail(e) {
+    e.preventDefault();
+    setEmail(e.target.value);
+  }
+
+  function changePassword(e) {
+    e.preventDefault();
+    setPassword(e.target.value);
   }
 
   return (
@@ -30,11 +63,11 @@ function Login() {
             <h3>Login</h3>
             <div className="twelve columns">
               <label htmlFor="exampleEmailInput">Your email</label>
-              <input className="u-full-width" type="email" placeholder="test@mailbox.com" name="email"/>
+              <input onChange={changeEmail} className="u-full-width" type="email" placeholder="test@mailbox.com" name="email"/>
             </div>
             <div className="twelve columns">
               <label htmlFor="exampleEmailInput">Your password</label>
-              <input className="u-full-width" type="password" placeholder="mypassword" name="password"/>
+              <input onChange={changePassword} className="u-full-width" type="password" placeholder="mypassword" name="password"/>
             </div>
             <div className="twelve columns">
               <input className="button-primary" type="submit" value="Submit"/>
@@ -44,4 +77,10 @@ function Login() {
   );
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.AuthReducer
+  }
+}
+
+export default connect(mapStateToProps) (withRouter(Login));

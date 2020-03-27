@@ -1,15 +1,22 @@
 import React from 'react';
-import {  } from 'react-router';
 import './App.css';
 import Routes from "./Routes";
+import { connect } from 'react-redux';
+import Nav from './componets/Nav/Nav';
 
 function App() {
   return (
     <div className="App">
-
+      <Nav/>
       <Routes/>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.AuthReducer
+  }
+}
+
+export default connect(mapStateToProps) (App);
