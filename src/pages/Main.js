@@ -1,13 +1,13 @@
 import React from 'react';
 
-function Pause() {
+function Main() {
   return (
-    <div className="Pause">
+    <div className="Main">
         <section>
-          <h1>PAUSE</h1>
+          <h1>Main</h1>
         </section>
     </div>
   );
 }
 
-export default Pause;
+export default Main;

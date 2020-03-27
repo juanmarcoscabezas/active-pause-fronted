@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Landing from './Landing';
-import Pause from './Pause';
+import Main from './Main';
 
 function Home(props) {
   return (
@@ -10,7 +10,7 @@ function Home(props) {
           (
             props.auth.token === null
             ? <Landing/>
-            : <Pause/>
+            : <Main/>
           )
         }
     </div>
