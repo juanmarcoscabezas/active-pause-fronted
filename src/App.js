@@ -3,11 +3,18 @@ import './App.css';
 import Routes from "./Routes";
 import { connect } from 'react-redux';
 import Nav from './componets/Nav/Nav';
+import AuthNav from './componets/Nav/AuthNav';
 
-function App() {
+function App(props) {
   return (
     <div className="App">
-      <Nav/>
+      {
+        (
+          props.auth.token === null
+          ? <Nav/>
+          : <AuthNav/>
+        )
+      }
       <Routes/>
     </div>
   );

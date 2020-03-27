@@ -1,5 +1,5 @@
 const authLogout = {
-    token: '',
+    token: null,
     user: {}
 };
 
@@ -15,10 +15,10 @@ const AuthReducer = (state = authLogout, action) => {
             return {...state};
         default:
             const token = localStorage.getItem('userToken');
-            if (token) {
-                state.token = token;
+            if (token !== null) {
+                state.token = JSON.parse(token);
             }
-            return state;
+            return {...state};
     }
 }
 

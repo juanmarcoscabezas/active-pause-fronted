@@ -4,7 +4,7 @@ function Pause() {
   return (
     <div className="Pause">
         <section>
-          <h1>Welcome to pause Page</h1>
+          <h1>PAUSE</h1>
         </section>
     </div>
   );
