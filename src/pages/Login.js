@@ -25,25 +25,25 @@ function Login(props) {
     };
 
     fetch('http://localhost:3000/auth/login', config)
-    .then(res => res.json())
-    .then(
-      (result) => {
-        if (!result.error) {
-          setEmail('');
-          setPassword('');
-          props.dispatch({
-            type: 'LOGIN',
-            data: result
-          });
-          props.history.push('/');
-        } else {
-          alert(result.message);
+      .then(res => res.json())
+      .then(
+        (result) => {
+          if (!result.error) {
+            setEmail('');
+            setPassword('');
+            props.dispatch({
+              type: 'LOGIN',
+              data: result
+            });
+            props.history.push('/');
+          } else {
+            alert(result.message);
+          }
+        },
+        (error) => {
+          console.log(error);
         }
-      },
-      (error) => {
-        console.log(error);
-      }
-    )
+      )
   }
 
   function changeEmail(e) {
@@ -58,21 +58,21 @@ function Login(props) {
 
   return (
     <div className="Login">
-        <h2 className="page-title">ActivePause Login</h2>
-        <form className="login-form" onSubmit={submitForm}> 
-            <h3>Login</h3>
-            <div className="twelve columns">
-              <label htmlFor="email">Email</label>
-              <input onChange={changeEmail} className="u-full-width" type="email" placeholder="test@mail.com" name="email"/>
-            </div>
-            <div className="twelve columns">
-              <label htmlFor="password">Password</label>
-              <input onChange={changePassword} className="u-full-width" type="password" placeholder="mypassword" name="password"/>
-            </div>
-            <div className="twelve columns">
-              <input className="button-primary" type="submit" value="Submit"/>
-            </div>
-        </form>
+      <h2 className="page-title">ActivePause Login</h2>
+      <form className="login-form" onSubmit={submitForm}>
+        <h3>Login</h3>
+        <div className="twelve columns">
+          <label htmlFor="email">Email</label>
+          <input onChange={changeEmail} className="u-full-width" type="email" placeholder="test@mail.com" name="email" />
+        </div>
+        <div className="twelve columns">
+          <label htmlFor="password">Password</label>
+          <input onChange={changePassword} className="u-full-width" type="password" placeholder="mypassword" name="password" />
+        </div>
+        <div className="twelve columns">
+          <input className="button-primary" type="submit" value="Submit" />
+        </div>
+      </form>
     </div>
   );
 }
@@ -83,4 +83,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps) (withRouter(Login));
+export default connect(mapStateToProps)(withRouter(Login));

@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom';
 
 function AuthNav(props) {
 
-    function logout() {
+    function logout(e) {
+        e.preventDefault();
         props.dispatch({
             type: 'LOGOUT'
         });
@@ -14,25 +15,25 @@ function AuthNav(props) {
     }
 
     return (
-    <div className="Nav">
-        <ul className="navbar-list">
-            <li className="navbar-item-left">
-                <Link to="/" className="navbar-link">ActivePause</Link>
-            </li>
-            <li className="navbar-item-right">
-                <div onClick={logout} className="navbar-link">Logout</div>
-            </li>
-            <li className="navbar-item-right">
-                <Link to="/profile" className="navbar-link">Profile</Link>
-            </li>
-        </ul>
-    </div>
-    );
+        <div className="Nav">
+            <ul className="navbar-list">
+                <li className="navbar-item-left">
+                    <Link to="/" className="navbar-link">ActivePause</Link>
+                </li>
+                <li className="navbar-item-right">
+                    <a href="/" onClick={logout} className="navbar-link">Logout</a>
+                </li>
+                <li className="navbar-item-right">
+                    <Link to="/profile" className="navbar-link">Profile</Link>
+                </li>
+            </ul>
+        </div>
+    )
 }
 
 const mapStateToProps = (state) => {
     return {
-      auth: state.AuthReducer
+        auth: state.AuthReducer
     }
   }
   

@@ -10,18 +10,18 @@ const AuthReducer = (state = authLogout, action) => {
             state.token = action.data.token;
             state.isAuthenticated = true;
             localStorage.setItem('userToken', JSON.stringify(state.token));
-            return {...state};
+            return { ...state };
         case 'LOGOUT':
             state = authLogout;
             localStorage.removeItem('userToken');
-            return {...state};
+            return { ...state };
         default:
             const token = localStorage.getItem('userToken');
             if (token !== null) {
                 state.token = JSON.parse(token);
                 state.isAuthenticated = true;
             }
-            return {...state};
+            return { ...state };
     }
 }
 
