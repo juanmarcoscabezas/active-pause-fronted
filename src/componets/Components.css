@@ -1,0 +1,24 @@
+.landing-main-section{
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 50%;
+}
+
+.main-img{
+    width: 50%;
+}
+
+.main-img img{
+    width: 80%;
+}

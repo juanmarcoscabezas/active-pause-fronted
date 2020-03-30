@@ -1,3 +1,10 @@
+.Login, .Signup{
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .login-form{
     width: 400px;
     margin: 20px;

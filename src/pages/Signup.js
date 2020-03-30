@@ -70,9 +70,8 @@ function Signup(props) {
 
   return (
     <div className="Signup">
-        <h2 className="page-title">ActivePause Registration</h2>
         <form className="login-form" onSubmit={submitForm}> 
-            <h3>Signup</h3>
+            <h4>Signup</h4>
             <div className="twelve columns">
               <label htmlFor="firstName">First name</label>
               <input onChange={changeFirstName} className="u-full-width" type="text" placeholder="John" name="firstName"/>

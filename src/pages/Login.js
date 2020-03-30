@@ -58,9 +58,8 @@ function Login(props) {
 
   return (
     <div className="Login">
-      <h2 className="page-title">ActivePause Login</h2>
       <form className="login-form" onSubmit={submitForm}>
-        <h3>Login</h3>
+        <h4>Login</h4>
         <div className="twelve columns">
           <label htmlFor="email">Email</label>
           <input onChange={changeEmail} className="u-full-width" type="email" placeholder="test@mail.com" name="email" />
