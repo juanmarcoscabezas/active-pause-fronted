@@ -4,7 +4,9 @@
     background-color: white;
     display: flex;
     align-items: center;
-    border-bottom: 0.5px rgb(243, 251, 253) solid;
+    border-bottom: 0.5px rgb(255, 247, 233) solid;
+    z-index: 1;
+    position: relative;
 }
 
 .navbar-list {
@@ -29,8 +31,7 @@
 .navbar-link{
     text-transform: uppercase;
     text-decoration: none;
-    letter-spacing: 0.2rem;
-    line-height: 6.5rem;
+    letter-spacing: 0.1rem;
     color: #222;
     font-size: 12px;
     font-weight: 600;

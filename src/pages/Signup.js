@@ -71,7 +71,7 @@ function Signup(props) {
   return (
     <div className="Signup">
         <form className="login-form" onSubmit={submitForm}> 
-            <h4>Signup</h4>
+            <h4>Sign up</h4>
             <div className="twelve columns">
               <label htmlFor="firstName">First name</label>
               <input onChange={changeFirstName} className="u-full-width" type="text" placeholder="John" name="firstName"/>

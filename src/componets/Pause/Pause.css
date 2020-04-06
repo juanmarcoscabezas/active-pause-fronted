@@ -1,0 +1,35 @@
+.Pause {
+    padding-top: 30px;
+}
+
+.Pause .pause-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.Pause .pause-header h3 {
+    text-align: center;
+    margin-right: 20px;
+}
+
+.Pause .pause-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Pause .pause-card {
+    background-color: white;
+    width: 400px;
+    padding: 20px;
+    margin: 10px;
+    border: #f0f0f3 1px solid;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,.02),0 2px 14px 0 rgba(0,0,0,.1)
+}
+
+.Pause .pause-card h5, .Pause .pause-card p {
+    margin: 0;
+}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Pause from './Pause/Pause';
+// import APIConfig from '../config';
 
 function Main(props) {
 
@@ -37,7 +38,6 @@ function Main(props) {
   return (
     <div className="Main">
         <section>
-          <h1>Main</h1>
           <Pause pauses={pauses}/>
         </section>
     </div>
