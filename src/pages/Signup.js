@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
+import apiRequest from '../http/request';
 import "./Form.css";
 
 function Signup(props) {
@@ -9,7 +10,7 @@ function Signup(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  function submitForm(e) {
+  async function submitForm(e) {
     e.preventDefault();
 
     const user = {
@@ -19,33 +20,15 @@ function Signup(props) {
       password
     };
 
-    const config = {
-      method: 'POST',
-      body: JSON.stringify(user),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    };
-
-    fetch('http://localhost:3000/auth/signup', config)
-    .then(res => res.json())
-    .then(
-      (result) => {
-        if (!result.error) {
-          setFirstName('');
-          setLastName('');
-          setEmail('');
-          setPassword('');
-          alert('Success registration');
-          props.history.push('/auth/login');
-        } else {
-          alert(result.message);
-        }
-      },
-      (error) => {
-        console.log(error);
-      }
-    )
+    const result = await apiRequest('POST', 'auth/signup', user);
+    if (result !== null) {
+      setFirstName('');
+      setLastName('');
+      setEmail('');
+      setPassword('');
+      alert('Success registration');
+      props.history.push('/auth/login');
+    }
   }
 
   function changeFirstName(e) {

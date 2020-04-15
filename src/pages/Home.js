@@ -8,7 +8,7 @@ function Home(props) {
     <div className="Home">
         {
           (
-            props.auth.token === null
+            props.auth.accessToken === null
             ? <Landing/>
             : <Main/>
           )

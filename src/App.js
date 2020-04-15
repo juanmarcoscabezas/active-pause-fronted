@@ -10,7 +10,7 @@ function App(props) {
     <div className="App">
       {
         (
-          props.auth.token === null
+          props.auth.accessToken === null
           ? <Nav/>
           : <AuthNav/>
         )

@@ -1,38 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import Pause from './Pause/Pause';
-// import APIConfig from '../config';
+import apiRequest from '../http/request';
+import { connect } from 'react-redux';
 
 function Main(props) {
 
   const [pauses, setPauses] = useState([]);
 
-  useEffect( () => {
+  useEffect(() => {
     getPauses();
-  }, []); 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  function getPauses() {
-    const config = {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': JSON.parse(localStorage.getItem('userToken'))
-      }
-    };
-
-    fetch('http://localhost:3000/pause', config)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          if (!result.error) {
-            setPauses(result);
-          } else {
-            alert(result.message);
-          }
-        },
-        (error) => {
-          console.log('error', error);
-        }
-      )
+  async function getPauses() {
+    const result = await apiRequest('GET', 'playlist', null, props.auth.accessToken);
+    if (result !== null) {
+      setPauses(result);
+    }
   }
 
   return (
@@ -44,4 +28,10 @@ function Main(props) {
   );
 }
 
-export default Main;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.AuthReducer
+  }
+}
+
+export default connect(mapStateToProps)(Main);

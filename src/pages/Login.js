@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
-import "./Form.css";
+import apiRequest from '../http/request';
+import './Form.css';
 
 function Login(props) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  function submitForm(e) {
+  async function submitForm(e) {
     e.preventDefault();
 
     const user = {
@@ -16,34 +17,16 @@ function Login(props) {
       password
     };
 
-    const config = {
-      method: 'POST',
-      body: JSON.stringify(user),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    };
-
-    fetch('http://localhost:3000/auth/login', config)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          if (!result.error) {
-            setEmail('');
-            setPassword('');
-            props.dispatch({
-              type: 'LOGIN',
-              data: result
-            });
-            props.history.push('/');
-          } else {
-            alert(result.message);
-          }
-        },
-        (error) => {
-          console.log(error);
-        }
-      )
+    const result = await apiRequest('POST', 'auth/login', user, '');
+    if (result !== null) {
+      setEmail('');
+        setPassword('');
+        props.dispatch({
+            type: 'LOGIN',
+            data: result
+        });
+        props.history.push('/');
+    }
   }
 
   function changeEmail(e) {

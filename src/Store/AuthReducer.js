@@ -1,5 +1,5 @@
 const authLogout = {
-    token: null,
+    accessToken: null,
     isAuthenticated: false,
     user: {}
 };
@@ -7,18 +7,19 @@ const authLogout = {
 const AuthReducer = (state = authLogout, action) => {
     switch (action.type) {
         case 'LOGIN':
-            state.token = action.data.token;
+            state.accessToken = action.data.accessToken;
             state.isAuthenticated = true;
-            localStorage.setItem('userToken', JSON.stringify(state.token));
+            localStorage.removeItem('userToken');
+            localStorage.setItem('userToken', JSON.stringify(action.data));
             return { ...state };
         case 'LOGOUT':
             state = authLogout;
             localStorage.removeItem('userToken');
             return { ...state };
         default:
-            const token = localStorage.getItem('userToken');
-            if (token !== null) {
-                state.token = JSON.parse(token);
+            const userToken = localStorage.getItem('userToken');
+            if (userToken !== 'undefined' && userToken && userToken !== null) {
+                state.accessToken = JSON.parse(userToken).accessToken;
                 state.isAuthenticated = true;
             }
             return { ...state };
