@@ -50,8 +50,13 @@
     border-radius: 4px;
     box-shadow: 0 2px 8px 0 rgba(0,0,0,.02),0 2px 14px 0 rgba(0,0,0,.1);
     cursor: pointer;
+    z-index: 1;
 }
 
 .PlaylistsAll .playlist-card h5, .PlaylistsAll .playlist-card p {
     margin: 0;
+}
+
+.playlist-remove-btn {
+    z-index: 2;
 }

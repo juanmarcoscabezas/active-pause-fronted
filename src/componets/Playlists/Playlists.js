@@ -20,7 +20,7 @@ function Main(props) {
     const result = await apiRequest('GET', 'playlist', null, props.auth.accessToken);
     if (result !== null) {
       setPlaylists(result);
-      console.log(result);
+      //console.log(result);
     }
   }
 
