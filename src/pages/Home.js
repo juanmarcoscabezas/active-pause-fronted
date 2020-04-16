@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Landing from '../componets/Landing';
-import Main from '../componets/Main';
+import Landing from '../componets/Landing/Landing';
+import Main from '../componets/Main/Main';
 
 function Home(props) {
   return (

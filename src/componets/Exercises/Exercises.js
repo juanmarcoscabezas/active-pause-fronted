@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import Pause from './Pause/Pause';
-import apiRequest from '../http/request';
+import SideNav from '../Nav/SideNav';
+import apiRequest from '../../http/request';
 import { connect } from 'react-redux';
+import './Exercises.css';
 
-function Main(props) {
+function Exercises(props) {
 
   const [pauses, setPauses] = useState([]);
 
   useEffect(() => {
     getPauses();
+    console.log(pauses);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -20,10 +22,13 @@ function Main(props) {
   }
 
   return (
-    <div className="Main">
-        <section>
-          <Pause pauses={pauses}/>
-        </section>
+    <div className="Exercises">
+      <section>
+        <SideNav />
+      </section>
+      <main>
+        <h1>My Exercises</h1>
+      </main>
     </div>
   );
 }
@@ -34,4 +39,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Main);
+export default connect(mapStateToProps)(Exercises);

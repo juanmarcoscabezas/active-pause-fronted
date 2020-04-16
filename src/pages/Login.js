@@ -20,12 +20,12 @@ function Login(props) {
     const result = await apiRequest('POST', 'auth/login', user, '');
     if (result !== null) {
       setEmail('');
-        setPassword('');
-        props.dispatch({
-            type: 'LOGIN',
-            data: result
-        });
-        props.history.push('/');
+      setPassword('');
+      props.dispatch({
+        type: 'LOGIN',
+        data: result
+      });
+      props.history.push('/');
     }
   }
 
