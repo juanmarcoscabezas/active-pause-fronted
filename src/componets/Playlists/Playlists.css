@@ -15,14 +15,16 @@
 
 /*ADD PLAYLIST COMPONENT*/
 .AddPlaylist {
+    min-width: 400px;
     height: fit-content;
     padding: 30px;
+    margin-top: 40px;
     border: 1px solid lightgray;
     border-radius: 4px;
     background-color: white;
-    position: absolute;
-    top: 35vh;
+    position: relative;
     box-shadow: 0 2px 8px 0 rgba(0,0,0,.02),0 2px 14px 0 rgba(0,0,0,.1);
+    z-index: 1
 }
 
 .playlist-input{
@@ -57,6 +59,9 @@
     margin: 0;
 }
 
-.playlist-remove-btn {
-    z-index: 2;
+.AddPlaylist-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
+

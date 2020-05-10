@@ -20,7 +20,6 @@ function Main(props) {
     const result = await apiRequest('GET', 'playlist', null, props.auth.accessToken);
     if (result !== null) {
       setPlaylists(result);
-      //console.log(result);
     }
   }
 
@@ -28,11 +27,18 @@ function Main(props) {
     setPlaylists([playlist].concat(playlists))
   }
 
-  function removePlaylist(playlist) {
-    const newPlaylists =  playlists.filter(p => {
-      return p._id !== playlist._id;
-    });
-    setPlaylists(newPlaylists);
+  async function removePlaylist(playlist) {
+    const result = await apiRequest('DELETE', 'playlist/' + playlist._id, null, props.auth.accessToken);
+    if (result !== null) {
+      const newPlaylists =  playlists.filter(p => {
+        return p._id !== playlist._id;
+      });
+      setPlaylists(newPlaylists);
+    }
+  }
+
+  function showAdd(e) {
+    setCreate(!create);
   }
 
   return (
@@ -41,11 +47,11 @@ function Main(props) {
         <SideNav />
       </section>
       <main>
-        <h1>My playlists</h1>
-        <button className="button-primary" onClick={e => {setCreate(!create)}}>Add playlist</button>
+        <h1>My routines</h1>
+        <button className="button-primary" onClick={showAdd}>Add playlist</button>
         {
           create
-          ? <CreatePlaylist newPlaylist={newPlaylist}/>
+          ? <CreatePlaylist newPlaylist={newPlaylist} showAdd={showAdd}/>
           : ""
         }
         <PlaylistsAll playlists={playlists} removePlaylist={removePlaylist}/>

@@ -30,7 +30,7 @@ export default async function apiRequest (
     };
 
     // When the request is not GET, body param is set to @config
-    if (method !== 'GET') {
+    if (method !== 'GET' && method !== 'DELETE') {
         config['body'] = JSON.stringify(body)
     }
 

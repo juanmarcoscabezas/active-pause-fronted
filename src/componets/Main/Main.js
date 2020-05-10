@@ -15,7 +15,7 @@ function Main(props) {
   }, []);
 
   async function getPauses() {
-    const result = await apiRequest('GET', 'playlist', null, props.auth.accessToken);
+    const result = await apiRequest('GET', 'playlist/top', null, props.auth.accessToken);
     if (result !== null) {
       setPauses(result);
     }
