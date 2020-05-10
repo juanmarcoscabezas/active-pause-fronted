@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './Pause.css'
+import './Top.css'
 
-function Pause({ pauses }) {
+function Top({ tops }) {
 
     const [timer, setTimer] = useState();
     const [start, setStart] = useState(false);
@@ -31,26 +31,25 @@ function Pause({ pauses }) {
     }
 
     return (
-        <div className="Pause">
-            <div className="pause-header">
-                <h3>Exercises</h3>
+        <div className="Top">
+            <div className="top-header">
+                <h3>Most popular</h3>
                 {
                     start === false 
                     ?
                         <button onClick={startExercise} className="button-primary" conte="asas">Start</button>
                     :   
                         <button onClick={stopExercise} className="button-primary" conte="asas">Stop</button>
-                }
-                
+                } 
             </div>
-            <div className="pause-list">
-            <h4>{getMinutes()}:{getSeconds()}</h4>
+            <h4 className="cronometer">{getMinutes()}:{getSeconds()}</h4>
+            <div className="top-list">
                 {
-                    pauses.map(pause => {
+                    tops.map(top => {
                         return (
-                            <div key={pause._id} className="pause-card">
-                                <h5>{pause.name}</h5>
-                                <p>{pause.description}</p>
+                            <div key={top._id} className="top-card">
+                                <h5>{top.name}</h5>
+                                <p>{top.description}</p>
                             </div>
                         )
                     })
@@ -60,4 +59,4 @@ function Pause({ pauses }) {
     );
 }
 
-export default Pause;
+export default Top;

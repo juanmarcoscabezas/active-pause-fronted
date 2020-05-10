@@ -1,26 +1,28 @@
-.Pause {
+.Top {
     padding-top: 30px;
 }
 
-.Pause .pause-header {
+.Top .top-header {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 }
 
-.Pause .pause-header h3 {
+.Top .top-header h3 {
     text-align: center;
     margin-right: 20px;
 }
 
-.Pause .pause-list{
+.Top .top-list{
+    margin: auto;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
-.Pause .pause-card {
+.Top .top-card {
     background-color: white;
     width: 400px;
     padding: 20px;
@@ -30,6 +32,10 @@
     box-shadow: 0 2px 8px 0 rgba(0,0,0,.02),0 2px 14px 0 rgba(0,0,0,.1);
 }
 
-.Pause .pause-card h5, .Pause .pause-card p {
+.Top .top-card h5, .Top .top-card p {
     margin: 0;
+}
+
+.cronometer {
+    text-align: center;    
 }

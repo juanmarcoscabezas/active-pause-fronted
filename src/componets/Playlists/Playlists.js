@@ -47,7 +47,7 @@ function Main(props) {
         <SideNav />
       </section>
       <main>
-        <h1>My routines</h1>
+        <h1>Routines</h1>
         <button className="button-primary" onClick={showAdd}>Add playlist</button>
         {
           create

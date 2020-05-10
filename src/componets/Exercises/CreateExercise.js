@@ -9,14 +9,12 @@ function CreateExercise(props) {
   const [description, setDescription] = useState([]);
 
   async function create(e) {
-
+    console.log('entra');
     e.preventDefault();
-
     const newExercise = {
       name,
       description
     };
-
     const result = await apiRequest('POST', 'exercise', newExercise, props.auth.accessToken);
     if (result !== null) {
       setName('');
@@ -30,11 +28,11 @@ function CreateExercise(props) {
       <h4>Create exercise</h4>
       <div >
         <label htmlFor="name">Name</label>
-        <input className="exercise-input" onChange={e => { setName(e.target.value) }} type="text" placeholder="My exercise" name="name" />
+        <input value={name} className="exercise-input" onChange={e => { setName(e.target.value) }} type="text" placeholder="My exercise" name="name" />
       </div>
       <div >
         <label htmlFor="description">Description</label>
-        <textarea className="exercise-input" onChange={e => { setDescription(e.target.value) }} type="text" placeholder="" name="description" />
+        <textarea value={description} className="exercise-input" onChange={e => { setDescription(e.target.value) }} type="text" placeholder="" name="description" />
       </div>
       <div className="AddExercise-btns">
         <input onClick={props.showAdd} className="button-default" type="button" value="Calcel" />

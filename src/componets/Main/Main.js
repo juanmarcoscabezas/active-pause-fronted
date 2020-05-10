@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Pause from '../Pause/Pause';
+import Top from '../Top/Top';
 import SideNav from '../Nav/SideNav';
 import apiRequest from '../../http/request';
 import { connect } from 'react-redux';
@@ -7,17 +7,17 @@ import './Main.css';
 
 function Main(props) {
 
-  const [pauses, setPauses] = useState([]);
+  const [tops, setTops] = useState([]);
 
   useEffect(() => {
-    getPauses();
+    getTop();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  async function getPauses() {
+  async function getTop() {
     const result = await apiRequest('GET', 'playlist/top', null, props.auth.accessToken);
     if (result !== null) {
-      setPauses(result);
+      setTops(result);
     }
   }
 
@@ -27,7 +27,7 @@ function Main(props) {
         <SideNav/>
       </section>
       <main>
-        <Pause pauses={pauses} />
+        <Top tops={tops} />
       </main>
     </div>
   );

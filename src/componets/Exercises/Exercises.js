@@ -47,7 +47,7 @@ function Exercises(props) {
         <SideNav />
       </section>
       <main>
-        <h1>My Exercises</h1>
+        <h1>Exercises</h1>
         <button className="button-primary" onClick={showAdd}>Add Exercise</button>
         {
           create
